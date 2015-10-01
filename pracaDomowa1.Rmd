@@ -34,4 +34,3 @@ model2 <- lm(GC~log(size), data=genomes)
 ggplot(data=genomes, aes(x=size, y=GC)) + geom_point(aes(colour=habitat), size=3, shape=16, alpha=0.6) + geom_abline(model1$coefficients)
 
 ggplot(data=genomes, aes(x=log(size), y=GC)) + geom_point(aes(colour=habitat), size=3, shape=16, alpha=0.6)
-```{r}
