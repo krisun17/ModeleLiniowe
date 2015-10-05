@@ -1,7 +1,7 @@
 ---
 title: "Praca Domowa 1"
 author: "Krzyztof Rutkowski"
-date: "Modele liniowe i mieszane"
+date: "5.10.2015"
 output: 
   html_document:
   toc: TRUE
@@ -19,13 +19,13 @@ data(heights)
 
 ggplot(data=heights, aes(x=Husband, y=Wife)) + geom_point(size=3, shape=16, alpha=0.6) + 
   geom_smooth(method="lm", se=FALSE)
-```{r}
+```
 
 Teraz policzmy dokładnie współczynniki prostej regresji.
 ```{r}
 model1 <- lm(Husband~Wife, data=heights)
 model1$coefficients
-```{r}
+```
 (Intercept)        Wife 
 37.8100491   0.8329246
 
@@ -36,7 +36,7 @@ Przedział ufności obliczymy korzystając z metody bootstrap resztowy.
 N <- 5000
 model <- lm(Husband~Wife, data=heights)
 nwsp <- replicate(N, {
-  ndf <- data.frame(x = heights$Husband,
+  ndf <- data.frame(x = heights$Wife,
                     y = model$fitted.values + sample(model$residuals))
   model2 <- lm(y~x, data=ndf)
   model2$coefficients
@@ -44,11 +44,11 @@ nwsp <- replicate(N, {
 df <- data.frame(intercept = nwsp[1,], slope = nwsp[2,])
 hist(df$intercept, 100, col="grey")
 hist(df$slope, 100, col="grey")
-```{r}
+```
 Przedział ufności dla współczynnika nachylenia:
-  ```{r}
-quantile(nwsp[2,], c(0.025, 0.975))
 ```{r}
+quantile(nwsp[2,], c(0.025, 0.975))
+```
 Wychodzi:
 2.5%     97.5% 
-0.4538339 0.7154399 
+0.6918185 0.9683874
