@@ -1,6 +1,6 @@
 ---
 title: "Praca Domowa 1"
-author: "Krzyztof Rutkowski"
+author: "Krzysztof Rutkowski"
 date: "5.10.2015"
 output: 
   html_document:
@@ -25,9 +25,9 @@ Teraz policzmy dokładnie współczynniki prostej regresji.
 ```{r}
 model1 <- lm(Husband~Wife, data=heights)
 model1$coefficients
-```
 (Intercept)        Wife 
 37.8100491   0.8329246
+```
 
 2. Wyznacz obliczeniowo przedział ufności dla współczynnika nachylenia.
 
@@ -48,7 +48,8 @@ hist(df$slope, 100, col="grey")
 Przedział ufności dla współczynnika nachylenia:
 ```{r}
 quantile(nwsp[2,], c(0.025, 0.975))
-```
 Wychodzi:
 2.5%     97.5% 
 0.6918185 0.9683874
+```
+
